@@ -23,6 +23,7 @@
         element.addEventListener('click', function(){
             
             var tabName = element.getAttribute('data-name');
+            document.querySelector('.collection-hero__title').innerHTML = tabName;
             fetch('/collections/'+tabName+'')
             .then(response => response.text())
             .then(html => {
@@ -37,6 +38,7 @@
 
     document.querySelector('.mobile_collection-tabs').addEventListener('change', function(){
         var tabName = this.value;
+        document.querySelector('.collection-hero__title').innerHTML = tabName;
         fetch('/collections/'+tabName+'')
         .then(response => response.text())
         .then(html => {
