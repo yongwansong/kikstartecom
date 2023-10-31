@@ -1,14 +1,17 @@
 {{ 'component-collection-tabs.css' | asset_url | stylesheet_tag }}
 
 <div class="page-width collection-tabs">
-    {% for block in section.blocks %}
-        <p class="collection-tabs_list" data-name="{{block.settings.collection_tab | handleize}}">
-            {{ block.settings.collection_tab }}
-        </p>
-    {% endfor %}
+    <div class="desctop_collection-tabs">
+        {% for block in section.blocks %}
+            <p class="collection-tabs_list" data-name="{{block.settings.collection_tab | handleize}}">
+                {{ block.settings.collection_tab }}
+            </p>
+        {% endfor %}
+    </div>
+    
     <select class="mobile_collection-tabs">
         {% for block in section.blocks %}
-            <option value="{{block.settings.collection_tab}}" class="collection-tabs_list" data-name="{{block.settings.collection_tab | handleize}}">
+            <option value="{{block.settings.collection_tab | handleize}}" class="mobile-collection-tabs_list">
                 {{ block.settings.collection_tab }}
             </option>
         {% endfor %}
@@ -18,6 +21,7 @@
 <script>
     document.querySelectorAll('.collection-tabs_list').forEach(element => {
         element.addEventListener('click', function(){
+            
             var tabName = element.getAttribute('data-name');
             fetch('/collections/'+tabName+'')
             .then(response => response.text())
@@ -29,6 +33,20 @@
             });
         })
     })
+
+
+    document.querySelector('.mobile_collection-tabs').addEventListener('change', function(){
+        var tabName = this.value;
+        fetch('/collections/'+tabName+'')
+        .then(response => response.text())
+        .then(html => {
+            var parser = new DOMParser();
+            var doc = parser.parseFromString(html, 'text/html');
+            var collectionHTML = doc.querySelector('.product-grid-container').innerHTML;
+            document.querySelector('.product-grid-container').innerHTML = collectionHTML;
+        });
+    })
+
 </script>
 
 {% schema %}
