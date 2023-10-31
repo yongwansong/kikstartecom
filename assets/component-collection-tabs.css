@@ -7,6 +7,10 @@
     cursor: pointer;
 }
 
+.collection-hero__title{
+    text-transform: uppercase;
+}
+
 @media (min-width: 768px){
     .mobile_collection-tabs{
         display: none;
