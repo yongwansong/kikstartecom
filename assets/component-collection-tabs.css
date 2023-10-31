@@ -1,0 +1,9 @@
+.collection-tabs{
+    display: flex;
+    gap: 30px;
+}
+
+.collection-tabs p{
+    text-transform: uppercase;
+    cursor: pointer;
+}

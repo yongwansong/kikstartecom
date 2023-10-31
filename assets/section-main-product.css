@@ -15,6 +15,112 @@
   padding-left: 0;
 }
 
+.product-key_ingredient{
+  margin-top: 100px;
+  padding: 20px 0;
+}
+
+.product-key_ingredient-wrapper{
+  padding: 20px;
+  background-color: #F7F8F5;
+}
+
+.product-metaobjects{
+  display: flex;
+  justify-content: space-between;
+}
+
+.product-key_ingredient-title{
+  text-align: center;
+  text-transform: uppercase;
+  margin-bottom: 40px;
+}
+
+.product-metaobjects .product-metaobjects_list{
+  width: calc( 25% - 15px );
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.product-metaobjects .product-metaobjects_list img{
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+}
+
+.product-metaobjects .iwt-content .iwt-content_title{
+  text-transform: uppercase;
+}
+
+.product-metaobjects .list-title, .product-metaobjects .learn_more{
+  text-transform: uppercase;
+}
+
+.product-metaobjects .metafield-rich_text_field p{
+  text-align: center;
+}
+
+.product-metaobjects .learn_more{
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.product-metaobjects .modal { /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 3; /* Sit on top */
+  padding-top: 70px; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+}
+
+.product-metaobjects .modal-content {
+  background-color: #fefefe;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 90%;
+  border-radius: 20px;
+  padding: 70px;
+  position: relative;
+}
+
+.product-metaobjects .modal-content .image-with-content{
+  display: flex;
+  gap: 35px;
+}
+
+.product-metaobjects .modal-content .image-with-content img{
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+}
+
+.product-metaobjects .modal-content .metafield-rich_text_field p{
+  text-align: left;
+}
+
+.product-metaobjects .close {
+  color: #000;
+  float: right;
+  font-size: 38px;
+  font-weight: 700;
+  position: absolute;
+  top: 10px;
+  right: 20px;
+}
+
+.close:hover,
+.close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+
 @media screen and (min-width: 750px) {
   .product__column-sticky {
     display: block;
@@ -520,6 +626,28 @@ a.product__text {
 
   .product--mobile-columns .product__media-item {
     width: calc(50% - 1.5rem - var(--grid-mobile-horizontal-spacing));
+  }
+
+  .product-metaobjects .product-metaobjects_list{
+    flex-direction: column;
+    margin-bottom: 30px;
+    width: 100%;
+  }
+
+  .product-metaobjects{
+    flex-direction: column;
+  }
+
+  .product-metaobjects .modal-content{
+    padding: 50px 20px;
+  }
+
+  .product-metaobjects .modal-content .image-with-content{
+    flex-direction: column;
+  }
+
+  .product-metaobjects .modal-content .iwt-image{
+    text-align: center;
   }
 }
 

@@ -1,0 +1,56 @@
+{{ 'component-collection-tabs.css' | asset_url | stylesheet_tag }}
+
+<div class="page-width collection-tabs">
+    {% for block in section.blocks %}
+        <p class="collection-tabs_list" data-name="{{block.settings.collection_tab | handleize}}">
+            {{ block.settings.collection_tab }}
+        </p>
+    {% endfor %}
+</div>
+
+<script>
+    document.querySelectorAll('.collection-tabs_list').forEach(element => {
+        element.addEventListener('click', function(){
+            var tabName = element.getAttribute('data-name');
+            fetch('/collections/'+tabName+'')
+            .then(response => response.text())
+            .then(html => {
+                var parser = new DOMParser();
+                var doc = parser.parseFromString(html, 'text/html');
+                var collectionHTML = doc.querySelector('.product-grid-container').innerHTML;
+                document.querySelector('.product-grid-container').innerHTML = collectionHTML;
+                console.log(collectionHTML);
+            });
+        })
+    })
+</script>
+
+{% schema %}
+    {
+        "name": "Collection Tabs",
+        "class": "collection_tabs",
+        "settings": [
+        ],
+
+        "blocks": [
+            {
+                "type": "collection",
+                "name": "Collection",
+                "settings": [
+                    {
+                        "type": "text",
+                        "id": "collection_tab",
+                        "label": "Collection Tab"
+                    }
+                ]
+            }
+        ],
+
+        "presets":[
+            {
+                "name": "Collection Tabs"
+            }
+        ]
+        
+    }
+{% endschema %}
