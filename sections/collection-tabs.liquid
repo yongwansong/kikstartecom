@@ -6,6 +6,13 @@
             {{ block.settings.collection_tab }}
         </p>
     {% endfor %}
+    <select class="mobile_collection-tabs">
+        {% for block in section.blocks %}
+            <option value="{{block.settings.collection_tab}}" class="collection-tabs_list" data-name="{{block.settings.collection_tab | handleize}}">
+                {{ block.settings.collection_tab }}
+            </option>
+        {% endfor %}
+    </select>
 </div>
 
 <script>
@@ -19,7 +26,6 @@
                 var doc = parser.parseFromString(html, 'text/html');
                 var collectionHTML = doc.querySelector('.product-grid-container').innerHTML;
                 document.querySelector('.product-grid-container').innerHTML = collectionHTML;
-                console.log(collectionHTML);
             });
         })
     })

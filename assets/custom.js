@@ -1,7 +1,6 @@
 document.addEventListener('DOMContentLoaded', function (){
     document.querySelectorAll('.learn_more').forEach(button => {
         button.addEventListener('click', function(){
-          console.log('fdfdfdfd')
           button.closest('.product-metaobjects_list').querySelector('.modal').classList.remove('hidden');
         })
     })
